@@ -1,0 +1,56 @@
+/* home.css */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    position: relative;
+    text-align: center;
+    background-color: #d1eaec;
+  }
+  
+  button{
+    background-color: #e3e2e1;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    opacity: 1;
+  }
+  .home_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 100px;
+  }
+  
+  
+  .home_text h1 {
+    font-size:50px;
+    margin-bottom: 10px;
+  }
+  
+  .home_text p {
+    font-size: 25px;
+  }
+  
+  header img {
+    width: 100%;
+  }
+  
+  .Categories {
+    margin-top: 50px;
+  }
+  
+  .Categories h2 {
+    text-align: center;
+  }
+  

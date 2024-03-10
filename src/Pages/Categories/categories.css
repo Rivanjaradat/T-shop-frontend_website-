@@ -1,0 +1,23 @@
+.categories{
+  
+    margin-top: 40px;
+   
+
+
+}
+.category{
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:40px;
+  
+}
+.category a{
+   
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+}
