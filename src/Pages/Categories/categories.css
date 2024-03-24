@@ -1,23 +1,139 @@
-.categories{
-  
+.categories {
     margin-top: 40px;
-   
-
-
-}
-.category{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
   
+  .categories-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+ 
+  }
+  
+  .category {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap:40px;
+    gap: 40px;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 30px;
+    width: calc((100% - 80px) / 3); 
+  }
   
-}
-.category a{
-   
+  .category a {
     text-decoration: none;
     color: black;
     font-size: 20px;
     font-weight: 600;
-}
+  }
+  .categories-btn{
+    border-radius: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+  }
+
+
+  
+  
+  .card {
+    width: 300px;
+    height: 400px;
+    padding: 0.8em;
+  
+    background: #f5f5f5;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    margin-bottom: 30px; /* Adjust spacing between cards */
+  }
+  
+  .card-img {
+    background-color: rgba(143, 48, 48, 0.718);
+    height: 50%;
+    width: 100%;
+    border-radius: .5rem;
+    transition: .3s ease;
+   }
+  .card-img img
+
+  {
+    width:100%;
+  }
+  
+  .card-info {
+    padding-top: 10%;
+  }
+  
+  
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .card-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .text-title {
+    font-weight: 900;
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+  
+  .text-body {
+    font-size: 0.9em;
+    padding-bottom: 10px;
+  }
+  
+  .card-button {
+    border: 1px solid #252525;
+    display: flex;
+    padding: 0.3em;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .card-img:hover {
+    transform: translateY(-25%);
+    box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px,
+      rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+  }
+  
+  .card-button:hover {
+    border: 1px solid rgba(143, 48, 48, 0.718);
+    background-color:  rgba(143, 48, 48, 0.718);
+  }
+  .Allcard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+ 
+   
+  }
+   @media screen and (max-width:460px) {
+    .categories {
+      gap: 20px;
+    }
+    .categories-row {
+      gap: 20px;
+    }
+    .category {
+      padding: 20px;
+      width: 100%;
+    }
+  }

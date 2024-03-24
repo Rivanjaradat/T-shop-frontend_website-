@@ -1,23 +1,40 @@
 import Categories from "../Categories/Categories";
-import imageSrc from "../../assets/image/public/home.jpg";
 import "./home.css";
+import homeimage1 from "../../assets/image/Home/home1.jpg";
+import homeimage2 from "../../assets/image/Home/home2.jpg";
+import homeimage3 from "../../assets/image/Home/home3.jpg";
+
+
 
 export default function Home() {
-  return (
-    <div className="container">
-      <header>
-        <div className="home_text">
-          <h1>Welcome to T Shop</h1>
-          <p>Find the best products at the best prices</p>
-         
-        </div>
-        <img src={imageSrc} alt="Image description" />
-      </header>
 
-      <section className="Categories">
+
+
+  return (
+    <>
+   <section className="home  
+   ">
+        
+        <div className="leftSide">
+          <h1>Shop with us</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            itaque, voluptas, tempore, quod quidem dolorum voluptatem quos
+            necessitatibus quae qui quibusdam. Quisquam itaque, voluptas, tempore,
+            quod quidem dolorum voluptatem quos necessitatibus quae qui quibusdam.
+          </p>
+          <button >shop Now!</button>
+  </div>
+  <div className="rightSide">
+          
+            <img src={homeimage1} alt="homeimage1" />
+        </div>
+    </section>
+       <section className="Categories container">
         <h2>Check out our categories</h2>
         <Categories />
       </section>
-    </div>
+
+    </>
   );
 }

@@ -1,3 +1,47 @@
 .nav-link.active{
-    border-bottom: 2px solid teal   ;
+    border-bottom: 2px solid RGB(33, 124, 124);
+}
+.btn.btn-outline-success {
+    /* Example styles */
+    width: 150px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+    padding: 10px 20px; /* Adjust the padding as needed */
+}
+
+nav{
+    background-color: rgb(124, 33, 33);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    gap: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+ 
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 9;
+  margin-bottom: 50px;
+   
+   
+}
+ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+
+}
+
+  
+.logo{
+    color: white;
+    text-decoration: none;
+   
+}
+.nav-link{
+    color: white;
+    text-decoration: none;
+  
 }

@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios'; // Don't forget to import axios
+import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // Import Swiper styles
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './categories.css';
+import { useParams } from 'react-router-dom';
 
+
+import { Link } from 'react-router-dom';
 export default function Categories() {
   const [categories, setCategories] = useState([]);
 
@@ -18,26 +21,24 @@ export default function Categories() {
       console.error('Error fetching categories:', error);
     }
   }
-
+ 
   useEffect(() => {
     getCategories();
   }, []);
 
   return (
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      {categories.map((category) => (
-        <SwiperSlide key={category._id} className='categories'>
-          <div className="category">
+    <section id="categories" className="container categories">
+      <div className="categories-row">
+        {categories.map((category) => (
+          <div key={category._id} className="category">
             <a href="">{category.name}</a>
             <img src={category.image.secure_url} alt={category.name} />
+            <button><Link to={`/categories/${category._id}`}>View  Products</Link></button>
           </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+        ))}
+      </div>
+      <button className='categories-btn' > Load More</button>
+      
+    </section>
   );
 }
