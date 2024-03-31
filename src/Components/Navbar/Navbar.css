@@ -12,20 +12,13 @@
 nav{
     background-color: rgb(124, 33, 33);
     color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    gap: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
- 
-    position: sticky;
-    width: 100%;
-    top: 0;
-    z-index: 9;
-  margin-bottom: 50px;
-   
+   width: 100%;
    
 }
+body {
+    padding-top: 56px; /* Adjust this value based on your navbar height */
+  }
+  
 ul {
     display: flex;
     justify-content: space-around;
@@ -33,6 +26,7 @@ ul {
     padding: 0;
 
 }
+
 
   
 .logo{
@@ -44,4 +38,22 @@ ul {
     color: white;
     text-decoration: none;
   
+}
+/* Custom styles for the dropdown toggle */
+.dropdown-toggle {
+    background-color: transparent !important;
+    border: none !important;
+    color: white;
+}
+
+/* Custom styles for the dropdown menu */
+
+
+/* Remove focus outline */
+.dropdown-toggle:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.dropdown-toggle svg{
+    color: aliceblue;
 }

@@ -1,66 +1,82 @@
-import React ,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './categories.css';
+
 export default function CategoryProduct() {
-   const{id}= useParams('id');
-   const [products,setProducts]=useState([]);
-   const getProduct= async()=>{
-    const {data}=await axios.get(`https://ecommerce-node4.vercel.app/products/category/${id}`);
-   setProducts(data.products);
-   }
-;
-useEffect(()=>{
-    getProduct();
-    return ()=>{
-        console.log('clean up');
+    const { id } = useParams();
+    const [products, setProducts] = useState([]);
+
+    const getProduct = async () => {
+        const { data } = await axios.get(`/products/category/${id}`);
+        setProducts(data.products);
     };
-},[]);
-const addToCart= async( productId)=>{
-   /* const token=localStorage.getItem('userToken');
-   const {data}=await axios.post(`https://ecommerce-node4.vercel.app/cart`,{
-    productId
-   },{
-    headers:{
-      Authorization:`   Tariq__${token}`
-    }
-   });
-   console.log(data);*/
 
+    useEffect(() => {
+        getProduct();
+        return () => {
+            console.log('clean up');
+        };
+    }, []);
+
+    const addToCart = async (productId) => {
+        const token = localStorage.getItem('userToken');
+
+        // Check if user is logged in
+        if (!token) {
+            alert('Please login to add items to your cart.');
+            return;
+        }
+
+        try {
+            const { data } = await axios.post(`/cart`, {
+                productId
+            }, {
+                headers: {
+                    Authorization: `Tariq__${token}`
+                }
+            });
+            console.log(data);
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+        }
+    };
+
+    return (
+        <>
+            <div className="Allcard">
+                {products.map((product) => (
+                    <div className="card" key={product._id}>
+                        <div className="image-container">
+                            <img src={product.mainImage.secure_url} alt={product.name} />
+                            <div className="price">{product.price}</div>
+                        </div>
+                        <label className="favorite">
+                            <input checked={true} type="checkbox" />
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
+                                <path d="M12 20a1 1 0 0 1-.437-.1C11.214 19.73 3 15.671 3 9a5 5 0 0 1 8.535-3.536l.465.465.465-.465A5 5 0 0 1 21 9c0 6.646-8.212 10.728-8.562 10.9A1 1 0 0 1 12 20z"></path>
+                            </svg>
+                        </label>
+                        <div className="content">
+                            <div className="product-name">{product.name}</div>
+                            <div className="rating">
+                                <svg viewBox="0 0 99.498 16.286" xmlns="http://www.w3.org/2000/svg" className="svg four-star-svg">
+                                    {/* Rating stars */}
+                                </svg>
+                            </div>
+                        </div>
+                        <div className="button-container">
+                            <button className="buy-button button"><Link className="link-style" to={`/products/${product.id}`}>Details</Link></button>
+                            <button onClick={() => addToCart(product.id)} className="cart-button button">
+                                <svg viewBox="0 0 27.97 25.074" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0,1.175A1.173,1.173,0,0,1,1.175,0H3.4A2.743,2.743,0,0,1,5.882,1.567H26.01A1.958,1.958,0,0,1,27.9,4.035l-2.008,7.459a3.532,3.532,0,0,1-3.4,2.61H8.36l.264,1.4a1.18,1.18,0,0,0,1.156.955H23.9a1.175,1.175,0,0,1,0,2.351H9.78a3.522,3.522,0,0,1-3.462-2.865L3.791,2.669A.39.39,0,0,0,3.4,2.351H1.175A1.173,1.173,0,0,1,0,1.175ZM6.269,22.724a2.351,2.351,0,1,1,2.351,2.351A2.351,2.351,0,0,1,6.269,22.724Zm16.455-2.351a2.351,2.351,0,1,1-2.351,2.351A2.351,2.351,0,0,1,22.724,20.373Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </>
+    );
 }
-return (
-  <>
-<div className="Allcard container">
-  {products.map((product) => (
-    <div className="card" key={product._id}>
-      <div className="card-img">
-        <img src={product.mainImage.secure_url} alt={product.name} />
-      </div>
-      <div className="card-info">
-        <p className="text-title">{product.name}</p>
-        <p className="text-body">Product description and details</p>
-      </div>
-      <div className="card-footer">
-        <span className="text-title">{product.price}</span>
-        <div className="card-button" onClick={() => addToCart(product._id)}>
-          <svg className="svg-icon" viewBox="0 0 20 20">
-          <path d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z" />
-        <path d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z" />
-        <path d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z" />
-          </svg>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-
- 
-
-
-     
-  </>
-);
-
-}
-

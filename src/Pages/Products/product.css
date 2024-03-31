@@ -1,0 +1,201 @@
+.productDetails{
+    display: flex;
+gap:50px;
+justify-content: space-around;
+    
+    width :100%;
+    margin: 20px 0;
+    padding: 40px;
+    box-shadow: 2px 2px 2px 2px #888888;
+    border-radius: 5px;
+
+}
+.leftSide-details .mainImage{
+    width: 400px;
+   height: 400px;
+    border-radius: 5px;
+}
+.leftSide-details{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width:calc((100% - 40px) / 2);
+
+}
+.star-container {
+  display: flex;
+  gap:5px;
+}
+
+.Allcard{
+  display: flex;
+  flex-wrap: wrap;
+gap:50px;
+}
+.card {
+  width: 300px;
+  height: 400px;
+  padding: 0.8em;
+ 
+
+  background: #f5f5f5;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin-bottom: 30px; /* Adjust spacing between cards */
+}
+.card-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width:200px;
+}
+
+.card-img {
+  background-color: rgba(143, 48, 48, 0.718);
+ 
+  border-radius: .5rem;
+  transition: .3s ease;
+ }
+.card-img img
+
+{
+  width:100%;
+  height:100%;
+}
+.rightSide-details{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width:calc((100% - 40px) / 2);
+}
+.rightSide-details hr{
+  
+    margin: 10px 0;
+   border-style: solid;
+    border-color: black;
+  
+  
+   
+
+}
+
+.details-text{
+    width: 100%;
+    display: flex;
+   
+    align-items: center;
+    justify-content: space-around;
+}
+.subImages-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+  }
+  .zoomable {
+    transition: transform 0.3s ease;
+  }
+  
+  .zoomable:hover {
+    transform: scale(1.1); /* Adjust the scale value as desired for the zoom effect */
+  }
+  
+  .subImage {
+    margin-right: 10px; /* Adjust margin as needed */
+    margin-bottom: 10px; /* Adjust margin as needed */
+  }
+  
+  .subImage img {
+    width: 100px; /* Adjust image width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border : 1px solid black;
+  }
+
+  
+.subimage-btn{
+    width:50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color:white;
+    color: black   ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card__counter {
+border:1px solid black;
+   width: 100px;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+   gap :40px;
+  }
+  
+ 
+  
+  .card__btn-plus {
+    border: 1px solid black;
+  }
+  .card__btn-min {
+    border: 1px solid black;
+  }
+  .btn-cart{
+    width: 100%;
+    height: 50px;
+    background-color: #808080;
+    border: 1px solid;
+   
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+  .review {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    background-color: #fff;
+    margin-bottom: 20px; /* Add margin between cards */
+  }
+  
+  .feedback {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute cards evenly */
+  }
+  
+  .feedback-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Add margin between controls and cards */
+  }
+  
+  .feedback-controls button {
+    margin: 0 10px; /* Add margin between buttons */
+    padding: 10px 20px; /* Add padding to buttons */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .feedback-controls button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }
+  

@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    margin-top: 40px;
   }
   
   .categories-row {
@@ -37,93 +38,298 @@
     font-weight: bold;
   }
 
-
-  
+  .link-style {
+    color:white;/* Example color */
+    text-decoration: none; /* Remove default underline */
+  }
   
   .card {
-    width: 300px;
-    height: 400px;
-    padding: 0.8em;
-  
-    background: #f5f5f5;
+    --accent-color: #ffd426;
     position: relative;
-    overflow: visible;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    margin-bottom: 30px; /* Adjust spacing between cards */
+    width: 240px;
+    
+    background: white;
+    border-radius: 1rem;
+    padding: 0.3rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 50px 30px -20px;
+    transition: all 0.5s ease-in-out;
+  }
+  .card .image-container img {
+    width: 100%; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Limit the maximum height */
+    border-radius: inherit;
   }
   
-  .card-img {
-    background-color: rgba(143, 48, 48, 0.718);
-    height: 50%;
+  
+  .card .image-container {
+    position: relative;
     width: 100%;
-    border-radius: .5rem;
-    transition: .3s ease;
-   }
-  .card-img img
-
-  {
-    width:100%;
+    height: 130px;
+    border-radius: 0.7rem;
+    border-top-right-radius: 4rem;
+    margin-bottom: 1rem;
   }
   
-  .card-info {
-    padding-top: 10%;
-  }
-  
-  
-  
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .card-footer {
+  .card .image-container img {
     width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+  
+  .card .image-container .svg {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+  }
+  
+  .card .image-container .price {
+    position: absolute;
+    right: 0.7rem;
+    bottom: -1rem;
+    background: white;
+    color: var(--accent-color);
+    font-weight: 900;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border-radius: 1rem 1rem 2rem 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 15px 0px;
+  }
+  
+  .card .favorite {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+  
+  .card .favorite input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .card .favorite input:checked ~ svg {
+    animation: bouncing 0.5s;
+    fill: rgb(255, 95, 95);
+    filter: drop-shadow(0px 3px 1px rgba(53, 53, 53, 0.14));
+  }
+  
+  .card .favorite svg {
+    fill: #a8a8a8;
+  }
+  
+  .card .content {
+    padding: 0px 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card .content .brand {
+    font-weight: 900;
+    color: #a6a6a6;
+  }
+  
+  .card .content .product-name {
+    font-weight: 700;
+    color: #666666;
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card .content .color-size-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding-top: 10px;
-    border-top: 1px solid #ddd;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #a8a8a8;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
   }
   
-  .text-title {
-    font-weight: 900;
-    font-size: 1.2em;
-    line-height: 1.5;
+  .card .content .color-size-container > * {
+    flex: 1;
   }
   
-  .text-body {
-    font-size: 0.9em;
-    padding-bottom: 10px;
-  }
-  
-  .card-button {
-    border: 1px solid #252525;
-    display: flex;
-    padding: 0.3em;
-    cursor: pointer;
-    border-radius: 50px;
-    transition: 0.3s ease-in-out;
-  }
-  
-  .card-img:hover {
-    transform: translateY(-25%);
-    box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px,
-      rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
-  }
-  
-  .card-button:hover {
-    border: 1px solid rgba(143, 48, 48, 0.718);
-    background-color:  rgba(143, 48, 48, 0.718);
-  }
-  .Allcard{
+  .card .content .color-size-container .colors .colors-container {
+    list-style-type: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: 50px;
+    justify-content: space-between;
+    gap: 0.3rem;
+    font-size: 0.5rem;
+    margin-top: 0.2rem;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .color {
+    height: 14px;
+    position: relative;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .color:hover .color-name {
+    display: block;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .color a {
+    display: inline-block;
+    height: 100%;
+    aspect-ratio: 1;
+    border: 3px solid black;
+    border-radius: 50%;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .color .color-name {
+    display: none;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+    background: black;
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .color:first-child a {
+    border-color: #ffd426;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .color:nth-child(2) a {
+    background: #144076;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .color:nth-child(3) a {
+    border-color: #00b9ff;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .color:nth-child(4) a {
+    border-color: #ff6ba1;
+  }
+  
+  .card .content .color-size-container .colors .colors-container .active {
+    border-color: black;
+  }
+  
+  .card .content .color-size-container .sizes .size-container {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+  }
+  
+  .card .content .color-size-container .sizes .size-container .size {
+    height: 14px;
+  }
+  
+  .card .content .color-size-container .sizes .size-container .size .size-radio {
+    cursor: pointer;
+  }
+  
+  .card .content .color-size-container .sizes .size-container .size .size-radio input {
+    display: none;
+  }
+  
+  .card .content .color-size-container .sizes .size-container .size .size-radio input:checked ~ .name {
+    background:rgb(124, 33, 33);
+    border-radius: 2rem 2rem 1.5rem 1.5rem;
+    color: white;
+  }
+  
+  .card .content .color-size-container .sizes .size-container .size .size-radio .name {
+    display: grid;
+    place-content: center;
+    height: 100%;
+    aspect-ratio: 1.2/1;
+    text-decoration: none;
+    color: #484848;
+    font-size: 0.5rem;
+    text-align: center;
+  }
+  
+  .card .content .rating {
+    color: #a8a8a8;
+    font-size: 0.6rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .card .content .rating svg {
+    height: 12px;
+  }
+  
+  .card .button-container {
+    display: flex;
+    gap: 0.3rem;
+  }
+  
+  .card .button-container .button {
+    border-radius: 1.4rem 1.4rem 0.7rem 0.7rem;
+    border: none;
+    padding: 0.5rem 0;
+    background:rgb(124, 33, 33);
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  .Allcard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
     margin-top: 40px;
- 
-   
+  }
+  .card .button-container .button:hover {
+    background: rgb(235, 196, 182);
+  }
+  
+  .card .button-container .buy-button {
+    flex: auto;
+  }
+  
+  .card .button-container .cart-button {
+    display: grid;
+    place-content: center;
+    width: 50px;
+  }
+  
+  .card .button-container .cart-button svg {
+    width: 15px;
+    fill: white;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+  }
+  .load-more{
+    margin-bottom: 30px;
+  }
+  @keyframes bouncing {
+    from, to {
+      transform: scale(1, 1);
+    }
+  
+    25% {
+      transform: scale(1.5, 2.1);
+    }
+  
+    50% {
+      transform: scale(2.1, 1.5);
+    }
+  
+    75% {
+      transform: scale(1.5, 2.05);
+    }
   }
    @media screen and (max-width:460px) {
     .categories {

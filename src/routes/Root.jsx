@@ -1,5 +1,5 @@
 
-import Footer from '../Components/Footer/MyFooter'
+import MyFooter from '../Components/Footer/MyFooter'
 import Navbar from '../Components/Navbar/navbar'
 
 import { Outlet } from 'react-router-dom'
@@ -10,10 +10,11 @@ export default function Root() {
    <div className="container">
    <Navbar/>
     <Outlet/>
+    
   
  
    </div>
-
+ <MyFooter/>
  
     </>  )
 }

@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { object, string } from "yup";
 import { Bounce, toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import './Signin.css'
+import './Signin.css';
+import {UserContext} from '../../Context/User';
+import { Link } from "react-router-dom";
+
 
 export default function SignIn() {
+  const {setUserToken}=useContext(UserContext);
   const [user, setUser] = useState({
    
     email: "",
@@ -22,7 +26,13 @@ export default function SignIn() {
       [name]: value,
     });
   };
+const createAcount=()=>{
+  navigate('/signup');
+}
+const forgotPassword=()=>{
+  navigate('/forgotPassword');
 
+}
   const validateData = async (e) => {
     const loginSchema = object().shape({
    
@@ -50,7 +60,7 @@ export default function SignIn() {
     
     try {
       const { data } = await axios.post(
-        "https://ecommerce-node4.vercel.app/auth/signin",{
+        "/auth/signin",{
          
           email: user.email,
           password: user.password,
@@ -65,7 +75,8 @@ export default function SignIn() {
       });
       console.log(data);
      if (data.message == "success") {
-        toast.success("registerd succsesfully");
+      localStorage.setItem('userToken',data.token);
+        setUserToken(data.token);
         navigate('/');
       }
    
@@ -111,6 +122,8 @@ export default function SignIn() {
           onChange={handelChange}
         />
        </div>
+       <div><Link onClick={createAcount}>Dont have an acount? Sign Up!</Link><br/><br/>
+        <Link onClick={ forgotPassword}>Forgot your password? </Link><br/><br/></div>
         
         <button className="btn-signin " type="submit" 
         disabled={loader? 'disabled':null} >
