@@ -183,9 +183,10 @@ export default function Cart() {
       {cart.length > 0 && (
         <div className="checkout-btn-container">
           <button className="checkout-btn">
-            <Link to="./order">Check Out Now!</Link>
+            
+            <Link className="link-style" to="./order">Check Out Now!</Link>
           </button>
-          <button onClick={clearCart}>clear cart !</button>
+          <button onClick={clearCart}>clear cart </button>
         </div>
       )}
     </div>

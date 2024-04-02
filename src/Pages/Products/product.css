@@ -24,6 +24,17 @@ justify-content: space-around;
     width:calc((100% - 40px) / 2);
 
 }
+.makeReview{
+  margin-bottom: 40px;
+
+  
+}
+.feedbackForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .star-container {
   display: flex;
   gap:5px;
@@ -184,18 +195,27 @@ border:1px solid black;
     justify-content: center;
     margin-top: 20px; /* Add margin between controls and cards */
   }
+  .no-product {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    color: #666;
+    margin-bottom: 100px;
   
+  }
   .feedback-controls button {
     margin: 0 10px; /* Add margin between buttons */
     padding: 10px 20px; /* Add padding to buttons */
-    background-color: #007bff; /* Button background color */
+    background-color: rgba(143, 48, 48, 0.718); /* Button background color */
     color: #fff; /* Button text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 40px;
   }
   
   .feedback-controls button:hover {
-    background-color: #0056b3; /* Button background color on hover */
+    background-color:rgba(143, 48, 48, 0.421); /* Button background color on hover */
+
   }
   

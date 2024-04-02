@@ -21,6 +21,15 @@
    
 
 }
+.link-style{
+    text-decoration: none;
+    color: white;
+}
+.checkout-btn-container{
+    display: flex;
+    gap:30px;
+    margin-bottom: 30px;margin-top: 20px;
+}
 .left h3{
     font-size: 20px;
 }

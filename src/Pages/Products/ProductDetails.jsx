@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import "./product.css";
+import { toast } from "react-toastify";
 
 export default function ProductDetails() {
   const [orders, setOrders] = useState([]);
@@ -20,6 +17,8 @@ export default function ProductDetails() {
     comment: "",
     rating: "",
   });
+  const [loadingCart, setLoadingCart] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,12 +29,12 @@ export default function ProductDetails() {
   };
 
   const addReview = async (productId) => {
-    const token = localStorage.getItem('userToken');
+    const token = localStorage.getItem("userToken");
 
     const data = await axios.post(`/products/${productId}/review`, reviews, {
       headers: {
-        Authorization: `Tariq__${token}`
-      }
+        Authorization: `Tariq__${token}`,
+      },
     });
     setReviews({
       comment: "",
@@ -47,15 +46,15 @@ export default function ProductDetails() {
   const getUserOrder = async () => {
     const token = localStorage.getItem("userToken");
     try {
-      const response = await axios.get('/order', {
+      const response = await axios.get("/order", {
         headers: {
-          Authorization: `Tariq__${token}`
-        }
+          Authorization: `Tariq__${token}`,
+        },
       });
       setOrders(response.data.orders); // Set fetched orders to state
     } catch (error) {
       console.error("Error fetching orders:", error);
-      // Handle errors
+      toast.error(error.message);
     }
   };
 
@@ -74,13 +73,29 @@ export default function ProductDetails() {
   };
 
   const addToCart = async (productId) => {
+    setLoadingCart(true);
     const token = localStorage.getItem("userToken");
-    const { data } = await axios.post(
-      `/cart`,
-      { productId },
-      { headers: { Authorization: `Tariq__${token}` } }
-    );
-    console.log(data.products);
+
+    // Check if user is logged in
+    if (!token) {
+      setToastMessage("Please login to add items to your cart.");
+      setLoadingCart(false);
+      return;
+    }
+
+    try {
+      const { data } = await axios.post(
+        `/cart`,
+        { productId },
+        { headers: { Authorization: `Tariq__${token}` } }
+      );
+      setToastMessage("Item added to cart successfully.");
+      console.log(data.products);
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      setToastMessage("Failed to add item to cart.");
+    }
+    setLoadingCart(false);
   };
 
   useEffect(() => {
@@ -98,7 +113,9 @@ export default function ProductDetails() {
     const nextPage = currentPage + 1;
     const indexOfLastItem = nextPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    setDisplayedImages(product.subImages.slice(indexOfFirstItem, indexOfLastItem));
+    setDisplayedImages(
+      product.subImages.slice(indexOfFirstItem, indexOfLastItem)
+    );
     setCurrentPage(nextPage);
   };
 
@@ -106,7 +123,12 @@ export default function ProductDetails() {
     const prevPage = currentPage - 1;
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    setDisplayedImages(product.subImages.slice(indexOfFirstItem - itemsPerPage, indexOfLastItem - itemsPerPage));
+    setDisplayedImages(
+      product.subImages.slice(
+        indexOfFirstItem - itemsPerPage,
+        indexOfLastItem - itemsPerPage
+      )
+    );
     setCurrentPage(prevPage);
   };
 
@@ -127,13 +149,23 @@ export default function ProductDetails() {
           <div className="leftSide-details">
             <img className="mainImage" src={mainImageUrl} alt="" />
             <div className="subImages-container">
-              <button className="subimage-btn" onClick={prevImages}>&lt;</button>
+              <button className="subimage-btn" onClick={prevImages}>
+                &lt;
+              </button>
               {displayedImages.map((subImage, index) => (
-                <div key={index} className="subImage" onClick={() => handleSubImageClick(currentImageIndex + index, subImage.secure_url)}>
+                <div
+                  key={index}
+                  className="subImage"
+                  onClick={() =>
+                    handleSubImageClick(currentImageIndex + index, subImage.secure_url)
+                  }
+                >
                   <img src={subImage.secure_url} alt="" className="zoomable" />
                 </div>
               ))}
-              <button className="subimage-btn" onClick={nextImages}>&gt;</button>
+              <button className="subimage-btn" onClick={nextImages}>
+                &gt;
+              </button>
             </div>
           </div>
           <div className="rightSide-details">
@@ -156,14 +188,19 @@ export default function ProductDetails() {
               <h4>Discount :</h4>
               <span>{product.discount}</span>
             </div>
-            <button onClick={() => addToCart(product._id)} className="btn-cart">Add to Cart</button>
+            <button
+              onClick={() => addToCart(product._id)}
+              className="btn-cart"
+            >
+              {loadingCart ? "Adding to Cart..." : "Add to Cart"}
+            </button>
           </div>
         </div>
       )}
 
       <div className="makeReview">
-        <form onSubmit={handleSubmit}>
-          <h3 className="text-center mt-5">Leave a Review</h3>
+        <form className="feedbackForm" onSubmit={handleSubmit}>
+          <h3 className="text-center mt-5">Feedback</h3>
           <div className="container px-4 py-2 bg-light text-dark rounded">
             <label htmlFor="comment" className="form-label">
               Comment:
@@ -193,13 +230,16 @@ export default function ProductDetails() {
       </div>
 
       <div className="feedback">
-        {product && product.reviews.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((review, index) => (
-          <div key={index} className="review">
-            <p>{review.comment}</p>
-            <p>Rating: {review.rating}</p>
-            <p>By: {review.createdBy.userName}</p>
-          </div>
-        ))}
+        {product &&
+          product.reviews
+            .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+            .map((review, index) => (
+              <div key={index} className="review">
+                <p>{review.comment}</p>
+                <p>Rating: {review.rating}</p>
+                <p>By: {review.createdBy.userName}</p>
+              </div>
+            ))}
       </div>
       {product && (
         <div className="feedback-controls">
@@ -207,6 +247,12 @@ export default function ProductDetails() {
           <button onClick={nextImages}>Next</button>
         </div>
       )}
+      <div
+        className="toast"
+        style={{ display: toastMessage ? "block" : "none" }}
+      >
+        {toastMessage}
+      </div>
     </section>
   );
 }
