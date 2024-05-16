@@ -11,17 +11,11 @@ Product Reviews: Developed a robust review system, enabling users to provide fee
 React, HTML, CSS, JavaScript,Bootstrap,axios,react-router-dom,swiper,API,yup
 
 
-Uploading Untitled video - Made with Clipchamp (1).mp4…
+
+
+https://github.com/Rivanjaradat/react_Project/assets/103911286/f7882e5e-fc11-45cd-afe1-ab1f3b1e00c4
 
 
 
-Uploading Untitled video - Made with Clipchamp (1).mp4…
-
-
-
-Uploading Untitled video - Made with Clipchamp (1).mp4…
-
-
-
-Uploading Untitled video - Made with Clipchamp (1).mp4…
+https://github.com/Rivanjaradat/react_Project/assets/103911286/f7882e5e-fc11-45cd-afe1-ab1f3b1e00c4
 
