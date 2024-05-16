@@ -22,8 +22,3 @@ https://github.com/Rivanjaradat/react_Project/assets/103911286/37c5a3d3-0619-408
 
 
  
-
-
-
-https://github.com/Rivanjaradat/react_Project/assets/103911286/37c5a3d3-0619-4086-aa18-ccca18447f43
-
