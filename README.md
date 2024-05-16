@@ -10,9 +10,7 @@ User Authentication: Implemented a secure sign-in and sign-up system to safeguar
 React, HTML, CSS, JavaScript,Bootstrap,axios,react-router-dom,swiper,API,yup
 ## Demo
 
-https://react-project-1kz3.onrender.com
-
-
+https://t-shop-frontend-website-gz3q.onrender.com
 
 ## Screenshots
 
