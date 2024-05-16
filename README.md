@@ -1,8 +1,27 @@
-# React + Vite
+#T shop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔍 Description:
+Developed the frontend for T Shop's website, a single-page application aimed at providing users with a seamless shopping experience for a wide range of products.
+🎯 Key Features:
+User Authentication: Implemented a secure sign-in and sign-up system to safeguard user data and enhance user experience.
+Shopping Cart Functionality: Designed and integrated a user-friendly shopping cart feature, allowing users to easily manage their selected items.
+Product Catalog Display: Engineered a dynamic product catalog showcasing various categories and detailed product information for user exploration.
+Product Reviews: Developed a robust review system, enabling users to provide feedback and ratings on purchased products, fostering user engagement and trust.
+🛠️ Technologies Used:
+React, HTML, CSS, JavaScript,Bootstrap,axios,react-router-dom,swiper,API,yup
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Uploading Untitled video - Made with Clipchamp (1).mp4…
+
+
+
+Uploading Untitled video - Made with Clipchamp (1).mp4…
+
+
+
+Uploading Untitled video - Made with Clipchamp (1).mp4…
+
+
+
+Uploading Untitled video - Made with Clipchamp (1).mp4…
+
